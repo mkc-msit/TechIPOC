@@ -1,0 +1,40 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{title}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='table-responsive'>
+            <table class='table' *ngIf='jobs.length'>
+                <thead>
+                    <tr>
+                        <th>Source App</th>
+                        <th>Job Id</th>
+                        <th>Job Name</th>
+                        <th>Last Run Date</th>
+                        <th>Frequency</th>
+                        <th>Execution Type</th>
+                        <th>Current Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let job of jobs'>
+
+                        <td>{{ job.sourceApp }}</td>
+                        <td>{{ job.jobId }}</td>
+                        <td>{{ job.jobName }}</td>
+                        <td>{{ job.lastRunDate | date:'MM/dd/yyyy h:mm:ss a' }}</td>
+                        <td>{{ job.frequency }}</td>
+                        <td>{{ job.executionType }}</td>
+                        <td><span class="{{job.currentStatus | statusIcon}}"></span> {{ job.currentStatus }} </td>
+                        <td><a [routerLink]="['/job', job.jobId]">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

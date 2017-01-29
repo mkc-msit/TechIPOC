@@ -1,0 +1,9 @@
+[{
+    "sourceApp": "Command",
+    "jobId": "1",
+    "jobName": "Daily Tickets Command to ViewPoint",
+    "lastRunDate": "12/12/2016 11:43:45 AM",
+    "frequency": "Daily",
+    "executionType": "Scheduled",
+    "currentStatus": "Success"
+}]

@@ -1,0 +1,56 @@
+<form #jobForm="ngForm" novalidate>
+  <div class='panel panel-primary' *ngIf='job'>
+    <div class='panel-heading' style='font-size:large'>
+      
+      <div class='row'>
+        <p class='col-md-10' [innerText]="title"></p>
+        <div class='col-md-2'>Job ID: {{job.jobId}}</div>
+      </div>
+</div>
+
+<div class='panel-body'>
+  <div class='row'>
+    <div class='col-md-6'>
+<div class="form-group">
+        <label for="lastRunDate">Last Run Date:</label>
+        <input #lastRunDate="ngModel" [disabled]="true" type="datetime" class="form-control" name="lastRunDate" [(ngModel)]="job.lastRunDate" required/>
+        <div  *ngIf="lastRunDate.invalid && lastRunDate.touched" class="alert alert-danger">Required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="jobName">Job Name:</label>
+        <input #jobName="ngModel" type="text" class="form-control" name="jobName" [(ngModel)]="job.jobName" required/>
+        <div  *ngIf="jobName.invalid && jobName.touched" class="alert alert-danger">Job Name is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="frequency">Frequency:</label>
+        <select class="form-control" name="frequency" [(ngModel)]="job.frequency" required (blur)="onFrequencyBlur($event)">
+          <option default value="default">Select an option...</option>
+          <option *ngFor="let f of freqTypes" [value]="f">{{ f }}</option>
+        </select>
+        <div  *ngIf="freqError" class="alert alert-danger">This field is required.</div>        
+      </div>
+
+
+      <div class="form-group">
+        <label for="executionType">Execution Type:</label>
+        <select class="form-control" name="executionType" [(ngModel)]="job.executionType" required>
+          <option *ngFor="let e of executionTypes" [value]="e">{{ e }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='panel-footer'>
+        <a [ngClass]="{disabled : freqError || jobForm.invalid}" class='btn btn-success' (click)='onSave()' style='width:80px'>
+            Save <i class='glyphicon glyphicons-ok'></i> 
+        </a>
+        <a class='btn btn-default' (click)='onCancel()' style='width:80px'>
+            <i class='glyphicon glyphicons-remove'></i> Cancel
+        </a>
+        
+    </div>
+</div>
+</form>
