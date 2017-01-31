@@ -10,6 +10,7 @@ import { JobTypeActionsComponent } from './job-type-actions/job-type-actions.com
 import { StatusIconPipe } from './status-icon.pipe';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { JobServiceService } from './job-service.service';
+
 @NgModule({
   declarations: [
     AppComponent,

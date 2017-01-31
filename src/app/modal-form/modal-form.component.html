@@ -25,7 +25,8 @@
 
       <div class="form-group">
         <label for="frequency">Frequency:</label>
-        <select class="form-control" name="frequency" [(ngModel)]="job.frequency" required (blur)="onFrequencyBlur($event)">
+        <select class="form-control" name="frequency" [(ngModel)]="job.frequency" required (blur)="onFrequencyBlur($event)"
+        (change)="onFrequencyBlur($event)">
           <option default value="default">Select an option...</option>
           <option *ngFor="let f of freqTypes" [value]="f">{{ f }}</option>
         </select>
